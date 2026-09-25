@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex National University | Shaping Tomorrow's Leaders</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-navy: #0A192F;
+            --secondary-navy: #1E293B;
+            --accent-amber: #D97706;
+            --accent-amber-hover: #B45309;
+            --accent-blue: #2563EB;
+            --bg-light: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --transition-speed: 0.3s;
+        }
+
+        [data-bs-theme="dark"] {
+            --primary-navy: #020617;
+            --secondary-navy: #0F172A;
+            --accent-amber: #F59E0B;
+            --accent-amber-hover: #D97706;
+            --accent-blue: #3B82F6;
+            --bg-light: #0B132B;
+            --card-bg: #1E293B;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-color: #334155;
+            --glass-bg: rgba(30, 41, 59, 0.85);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-font {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Top Banner Bar */
+        .top-bar {
+            background-color: var(--primary-navy);
+            color: #CBD5E1;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-bar a {
+            color: #E2E8F0;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-amber);
+        }
+
+        /* Main Navbar */
+        .navbar {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all var(--transition-speed);
+        }
+
+        .navbar-brand img {
+            height: 48px;
+            width: auto;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--text-main);
+            padding: 0.5rem 1rem !important;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-amber) !important;
+        }
+
+        /* Hero Carousel */
+        .hero-carousel .carousel-item {
+            height: 85vh;
+            min-height: 550px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 25, 47, 0.4) 0%, rgba(10, 25, 47, 0.85) 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-badge {
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid var(--accent-amber);
+            color: #FDE68A;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* News Ticker */
+        .news-ticker-container {
+            background-color: var(--secondary-navy);
+            color: #FFFFFF;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ticker-badge {
+            background-color: var(--accent-amber);
+            color: #000;
+            font-weight: 700;
+            padding: 8px 18px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 35s linear infinite;
+        }
+
+        .ticker-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Key Stats Counter */
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-amber);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem auto;
+            font-size: 1.75rem;
+        }
+
+        /* Academics & Programs Cards */
+        .program-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .program-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .program-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .program-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-navy);
+            color: #FFF;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Calculator Card */
+        .calc-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .calc-result-box {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
+            color: #FFF;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        /* Notice Board */
+        .notice-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-amber);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .notice-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Gallery Item */
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            height: 260px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 25, 47, 0.75);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Custom Buttons */
+        .btn-amber {
+            background-color: var(--accent-amber);
+            color: #000;
+            font-weight: 600;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-amber:hover {
+            background-color: var(--accent-amber-hover);
+            color: #FFF;
+            transform: translateY(-2px);
+        }
+
+        .btn-navy {
+            background-color: var(--primary-navy);
+            color: #FFF;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-navy:hover {
+            background-color: var(--accent-blue);
+            color: #FFF;
+            border-color: var(--accent-blue);
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-navy);
+            color: #94A3B8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer h5 {
+            color: #FFF;
+            margin-bottom: 1.25rem;
+        }
+
+        footer a {
+            color: #CBD5E1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent-amber);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Announcement & Quick Contact Bar -->
+    <div class="top-bar py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-4">
+                <span><i class="bi bi-geo-alt-fill text-warning me-1"></i> Apex Knowledge City, University Avenue</span>
+                <span><i class="bi bi-envelope-fill text-warning me-1"></i> admissions@apex.edu.in</span>
+                <span><i class="bi bi-telephone-fill text-warning me-1"></i> Emergency Helpline: +91 1800-425-8900</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <a href="#notice-board"><i class="bi bi-bell-fill me-1"></i> Circulars</a>
+                <span class="text-secondary">|</span>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#applyModal"><i class="bi bi-person-badge me-1"></i> Student Portal</a>
+                <span class="text-secondary">|</span>
+                <!-- Theme Mode Switcher -->
+                <button class="btn btn-sm btn-outline-light py-0 px-2 rounded-pill" id="themeToggleBtn" title="Toggle Light/Dark Mode">
+                    <i class="bi bi-moon-stars-fill" id="themeIcon"></i> <span id="themeText" class="ms-1 fs-7">Dark</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <div class="bg-primary text-white rounded-3 p-2 d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
+                    <i class="bi bi-mortarboard-fill fs-4 text-warning"></i>
+                </div>
+                <div>
+                    <span class="brand-font fs-4 text-uppercase tracking-wider d-block lh-1 text-primary-gradient">APEX</span>
+                    <span class="fs-7 text-muted tracking-widest text-uppercase fw-semibold" style="font-size: 0.68rem;">National University</span>
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="bi bi-list fs-2 text-main"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About ANU</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#programs">Academics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#calculator">Fee Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#notice-board">Notices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#campus-life">Campus Life</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-outline-primary btn-sm rounded-3 d-none d-xl-block" data-bs-toggle="modal" data-bs-target="#virtualTourModal">
+                        <i class="bi bi-badge-3d me-1"></i> 360° Tour
+                    </button>
+                    <button class="btn btn-amber shadow-sm" data-bs-toggle="modal" data-bs-target="#applyModal">
+                        Apply Now <i class="bi bi-arrow-right-short ms-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section Carousel -->
+    <section id="hero" class="hero-carousel position-relative">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80');">
+                    <div class="hero-overlay">
+                        <div class="container text-white">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <span class="hero-badge mb-3 d-inline-block"><i class="bi bi-award-fill me-1"></i> NAAC A++ Accredited University</span>
+                                    <h1 class="display-3 fw-bold mb-3 text-white">Empowering Leaders, Transforming Tomorrow.</h1>
+                                    <p class="lead mb-4 text-light opacity-90">Discover world-class education, cutting-edge research opportunities, and vibrant campus life at India's top-ranked innovation varsity.</p>
+                                    <div class="d-flex flex-wrap gap-3">
+                                        <a href="#programs" class="btn btn-amber btn-lg">Explore Programs <i class="bi bi-compass ms-1"></i></a>
+                                        <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#virtualTourModal"><i class="bi bi-play-circle me-1"></i> Virtual Campus Tour</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80');">
+                    <div class="hero-overlay">
+                        <div class="container text-white">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <span class="hero-badge mb-3 d-inline-block"><i class="bi bi-stars me-1"></i> Admissions Open 2026-27</span>
+                                    <h1 class="display-3 fw-bold mb-3 text-white">Next-Gen Engineering & AI Programs.</h1>
+                                    <p class="lead mb-4 text-light opacity-90">State-of-the-art labs, global academic partnerships, and hands-on Industry 4.0 curriculum designed for future innovators.</p>
+                                    <div class="d-flex flex-wrap gap-3">
+                                        <button class="btn btn-amber btn-lg" data-bs-toggle="modal" data-bs-target="#applyModal">Apply For Admissions <i class="bi bi-pencil-square ms-1"></i></button>
+                                        <a href="#calculator" class="btn btn-outline-light btn-lg"><i class="bi bi-calculator me-1"></i> Check Fee & Scholarship</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80');">
+                    <div class="hero-overlay">
+                        <div class="container text-white">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <span class="hero-badge mb-3 d-inline-block"><i class="bi bi-trophy-fill me-1"></i> NIRF Rank #12 Overall</span>
+                                    <h1 class="display-3 fw-bold mb-3 text-white">98% Global Placement Rate.</h1>
+                                    <p class="lead mb-4 text-light opacity-90">Over 450+ fortune companies recruit our graduates with top-tier packages up to ₹48 LPA.</p>
+                                    <div class="d-flex flex-wrap gap-3">
+                                        <a href="#about" class="btn btn-amber btn-lg">Why Apex? <i class="bi bi-journal-text ms-1"></i></a>
+                                        <a href="#contact" class="btn btn-outline-light btn-lg"><i class="bi bi-geo-alt me-1"></i> Visit Campus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Breaking News Ticker -->
+    <div class="news-ticker-container d-flex align-items-center">
+        <div class="ticker-badge d-flex align-items-center gap-2">
+            <i class="bi bi-broadcast"></i> ANNOUNCEMENTS
+        </div>
+        <div class="ticker-content py-2 px-3 fs-6">
+            <span class="me-5"><i class="bi bi-dot text-warning fs-4 align-middle"></i> <strong>Admissions 2026:</strong> National Entrance Examination (ANUEE) registration portal is now live!</span>
+            <span class="me-5"><i class="bi bi-dot text-warning fs-4 align-middle"></i> <strong>Research Grant:</strong> Apex Innovation Cell receives $2.5M International Robotics Research Grant.</span>
+            <span class="me-5"><i class="bi bi-dot text-warning fs-4 align-middle"></i> <strong>Campus Drive:</strong> Global Tech Placement Week begins on March 15th for Final Year Students.</span>
+            <span class="me-5"><i class="bi bi-dot text-warning fs-4 align-middle"></i> <strong>Sports Fest:</strong> Annual Inter-University Sports Meet 'APEXUM 2026' schedule announced.</span>
+        </div>
+    </div>
+
+    <!-- Key Statistics Counter Section -->
+    <section class="py-5 bg-body-tertiary">
+        <div class="container py-3">
+            <div class="row g-4">
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+                        <h2 class="display-5 brand-font text-primary mb-1 counter" data-target="18500">0</h2>
+                        <p class="text-muted mb-0 fw-semibold">Enrolled Students</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-person-badge-fill"></i></div>
+                        <h2 class="display-5 brand-font text-primary mb-1 counter" data-target="650">0</h2>
+                        <p class="text-muted mb-0 fw-semibold">Expert Faculty</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-briefcase-fill"></i></div>
+                        <h2 class="display-5 brand-font text-primary mb-1"><span class="counter" data-target="98">0</span>%</h2>
+                        <p class="text-muted mb-0 fw-semibold">Placement Success</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-building-gear"></i></div>
+                        <h2 class="display-5 brand-font text-primary mb-1"><span class="counter" data-target="52">0</span>+</h2>
+                        <p class="text-muted mb-0 fw-semibold">Advanced Research Labs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Dean's Message Section -->
+    <section id="about" class="py-5">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Dean Office" class="img-fluid rounded-4 shadow-lg w-100" style="max-height: 480px; object-fit: cover;">
+                        <div class="glass-card position-absolute bottom-0 start-0 m-3 p-3 shadow d-flex align-items-center gap-3">
+                            <div class="bg-warning rounded-circle p-3 text-dark">
+                                <i class="bi bi-quote fs-3 lh-1"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Dr. Rajeshwar Sharma</h6>
+                                <small class="text-muted">Vice-Chancellor & Dean</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="text-amber fw-bold text-uppercase tracking-wider">Welcome to Apex National University</span>
+                    <h2 class="display-6 mt-2 mb-4">A Legacy of Academic Rigor & Future-Ready Innovation</h2>
+                    <p class="text-muted lead">Founded in 1985, Apex National University stands as a beacon of interdisciplinary learning, cutting-edge research, and holistic student development.</p>
+                    <p class="text-muted">We foster an vibrant eco-system where technology meets creativity. Our accreditation status speaks to our uncompromising dedication to academic quality.</p>
+                    
+                    <!-- Badges -->
+                    <div class="row g-3 my-4">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary border">
+                                <i class="bi bi-award fs-2 text-warning"></i>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">NAAC A++ Grade</h6>
+                                    <small class="text-muted">CGPA 3.89/4.0</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary border">
+                                <i class="bi bi-trophy fs-2 text-primary"></i>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">NIRF #12</h6>
+                                    <small class="text-muted">Top Ranked Varsity</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#programs" class="btn btn-navy">Explore Our Faculties <i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academics & Filterable Programs Section -->
+    <section id="programs" class="py-5 bg-body-tertiary">
+        <div class="container py-4">
+            <div class="text-center max-w-2xl mx-auto mb-5">
+                <span class="text-amber fw-bold text-uppercase tracking-wider">Academic Excellence</span>
+                <h2 class="display-6 mt-1">Explore Our World-Class Degree Programs</h2>
+                <p class="text-muted">Choose from industry-aligned undergraduate and postgraduate degrees taught by acclaimed scholars.</p>
+                
+                <!-- Category Filter Pills -->
+                <div class="d-flex flex-wrap justify-content-center gap-2 mt-4" id="programFilterBtnGroup">
+                    <button class="btn btn-navy active filter-btn" data-filter="all">All Fields</button>
+                    <button class="btn btn-outline-secondary filter-btn" data-filter="engineering">Engineering</button>
+                    <button class="btn btn-outline-secondary filter-btn" data-filter="cs">CS & AI</button>
+                    <button class="btn btn-outline-secondary filter-btn" data-filter="business">Business</button>
+                    <button class="btn btn-outline-secondary filter-btn" data-filter="science">Sciences</button>
+                    <button class="btn btn-outline-secondary filter-btn" data-filter="arts">Arts & Humanities</button>
+                </div>
+            </div>
+
+            <!-- Program Cards Grid -->
+            <div class="row g-4" id="programCardsGrid">
+                <!-- Program 1 -->
+                <div class="col-md-6 col-lg-4 program-item" data-category="cs">
+                    <div class="program-card">
+                        <div class="program-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="CS AI">
+                            <span class="program-tag">B.Tech</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-2">Computer Science & Artificial Intelligence</h5>
+                            <p class="text-muted fs-7 mb-3">Master Machine Learning, Neural Networks, Cloud Computing, and Software Architecture.</p>
+                            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div><i class="bi bi-clock text-warning me-1"></i> 4 Years</div>
+                                <div><i class="bi bi-cash-stack text-success me-1"></i> ₹1.25L / Sem</div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm mt-3 w-100 view-syllabus-btn" 
+                                data-title="B.Tech Computer Science & AI" 
+                                data-duration="4 Years (8 Semesters)"
+                                data-eligibility="60% in 10+2 with Physics, Chemistry, Math + ANUEE Score"
+                                data-syllabus="Sem 1: Data Structures, Linear Algebra | Sem 2: OOPs, Algorithms | Sem 3: AI & Machine Learning | Sem 4: Deep Learning, Cloud Architecture">
+                                <i class="bi bi-book me-1"></i> View Syllabus & Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="col-md-6 col-lg-4 program-item" data-category="business">
+                    <div class="program-card">
+                        <div class="program-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="MBA">
+                            <span class="program-tag">MBA</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-2">Master of Business Administration (MBA)</h5>
+                            <p class="text-muted fs-7 mb-3">Specialization in Fintech, Global Logistics, Digital Marketing, and Entrepreneurship.</p>
+                            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div><i class="bi bi-clock text-warning me-1"></i> 2 Years</div>
+                                <div><i class="bi bi-cash-stack text-success me-1"></i> ₹1.80L / Sem</div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm mt-3 w-100 view-syllabus-btn" 
+                                data-title="MBA International Business & Fintech" 
+                                data-duration="2 Years (4 Semesters)"
+                                data-eligibility="55% Graduation Marks + CAT/MAT/ANUMAT Score"
+                                data-syllabus="Sem 1: Financial Accounting, Managerial Economics | Sem 2: Corporate Finance, Marketing | Sem 3: International Trade, Fintech Systems | Sem 4: Capstone Project & Internship">
+                                <i class="bi bi-book me-1"></i> View Syllabus & Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="col-md-6 col-lg-4 program-item" data-category="engineering">
+                    <div class="program-card">
+                        <div class="program-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Robotics">
+                            <span class="program-tag">B.Tech</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-2">Robotics & Automation Engineering</h5>
+                            <p class="text-muted fs-7 mb-3">Design autonomous drones, industrial manipulators, embedded IoT hardware, and ROS systems.</p>
+                            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div><i class="bi bi-clock text-warning me-1"></i> 4 Years</div>
+                                <div><i class="bi bi-cash-stack text-success me-1"></i> ₹1.35L / Sem</div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm mt-3 w-100 view-syllabus-btn"
+                                data-title="B.Tech Robotics & Automation" 
+                                data-duration="4 Years (8 Semesters)"
+                                data-eligibility="60% in 10+2 PCM"
+                                data-syllabus="Sem 1: Engineering Mechanics, Microcontrollers | Sem 2: Control Systems, Kinematics | Sem 3: Industrial Robotics, ROS | Sem 4: Autonomous Driving Systems">
+                                <i class="bi bi-book me-1"></i> View Syllabus & Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="col-md-6 col-lg-4 program-item" data-category="science">
+                    <div class="program-card">
+                        <div class="program-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" alt="Biotech">
+                            <span class="program-tag">B.Sc Hons</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-2">Biotechnology & Genetic Engineering</h5>
+                            <p class="text-muted fs-7 mb-3">Explore CRISPR gene editing, biopharmaceuticals, molecular biology, and bio-informatics.</p>
+                            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div><i class="bi bi-clock text-warning me-1"></i> 3 Years</div>
+                                <div><i class="bi bi-cash-stack text-success me-1"></i> ₹75,000 / Sem</div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm mt-3 w-100 view-syllabus-btn"
+                                data-title="B.Sc Biotechnology & Bioinformatics" 
+                                data-duration="3 Years (6 Semesters)"
+                                data-eligibility="55% in 10+2 with PCB"
+                                data-syllabus="Sem 1: Cell Biology, Organic Chemistry | Sem 2: Genetics, Immunology | Sem 3: Genetic Engineering, Drug Discovery | Sem 4: Bio-Safety & Clinical Labs">
+                                <i class="bi bi-book me-1"></i> View Syllabus & Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 5 -->
+                <div class="col-md-6 col-lg-4 program-item" data-category="arts">
+                    <div class="program-card">
+                        <div class="program-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80" alt="Journalism">
+                            <span class="program-tag">BA</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-2">Journalism & Digital Media Production</h5>
+                            <p class="text-muted fs-7 mb-3">Hands-on newsroom training, podcast studio production, investigative journalism, and PR.</p>
+                            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div><i class="bi bi-clock text-warning me-1"></i> 3 Years</div>
+                                <div><i class="bi bi-cash-stack text-success me-1"></i> ₹65,000 / Sem</div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm mt-3 w-100 view-syllabus-btn"
+                                data-title="BA Journalism & Digital Media" 
+                                data-duration="3 Years (6 Semesters)"
+                                data-eligibility="50% in 10+2 Any Stream"
+                                data-syllabus="Sem 1: Media Ethics, Reporting | Sem 2: Audio-Visual Production | Sem 3: Digital PR, Investigative Journalism | Sem 4: Documentary Making">
+                                <i class="bi bi-book me-1"></i> View Syllabus & Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 6 -->
+                <div class="col-md-6 col-lg-4 program-item" data-category="cs">
+                    <div class="program-card">
+                        <div class="program-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Science">
+                            <span class="program-tag">M.Sc</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-2">M.Sc Data Analytics & Big Data</h5>
+                            <p class="text-muted fs-7 mb-3">Advanced Hadoop, PySpark, Statistical Modeling, Predictive Forecasting, and Visualization.</p>
+                            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div><i class="bi bi-clock text-warning me-1"></i> 2 Years</div>
+                                <div><i class="bi bi-cash-stack text-success me-1"></i> ₹1.10L / Sem</div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm mt-3 w-100 view-syllabus-btn"
+                                data-title="M.Sc Big Data Analytics" 
+                                data-duration="2 Years (4 Semesters)"
+                                data-eligibility="Graduation in CS/Math/Stats with 55%"
+                                data-syllabus="Sem 1: Advanced Probability, R & Python | Sem 2: PySpark, Data Lakes | Sem 3: Deep Neural Networks | Sem 4: Industry Capstone Project">
+                                <i class="bi bi-book me-1"></i> View Syllabus & Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Student Tools: Fee & Eligibility Calculator -->
+    <section id="calculator" class="py-5">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <span class="text-amber fw-bold text-uppercase tracking-wider">Smart Planning Tool</span>
+                    <h2 class="display-6 mt-2 mb-3">Admission Fee & Scholarship Calculator</h2>
+                    <p class="text-muted">Estimate your semester tuition fees and check your automatic merit scholarship eligibility instantly based on your academic score.</p>
+                    
+                    <div class="d-flex align-items-center gap-3 my-3">
+                        <div class="bg-success-subtle text-success p-3 rounded-circle fs-4">
+                            <i class="bi bi-award-fill"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Up to 40% Merit Scholarships</h6>
+                            <small class="text-muted">Automatically awarded for high scores (>90%)</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-primary-subtle text-primary p-3 rounded-circle fs-4">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">No Hidden Fees</h6>
+                            <small class="text-muted">Includes library, lab, and exam charges</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="calc-card p-4 p-md-5">
+                        <form id="feeCalcForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Course Level</label>
+                                    <select class="select form-select" id="calcDegreeLevel" required>
+                                        <option value="ug" selected>Undergraduate (UG)</option>
+                                        <option value="pg">Postgraduate (PG)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Select Program</label>
+                                    <select class="select form-select" id="calcProgramSelect" required>
+                                        <option value="125000" data-min="60">B.Tech Computer Science & AI</option>
+                                        <option value="135000" data-min="60">B.Tech Robotics Engineering</option>
+                                        <option value="75000" data-min="55">B.Sc Biotechnology</option>
+                                        <option value="65000" data-min="50">BA Journalism & Media</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Academic Percentage (%)</label>
+                                    <input type="number" min="40" max="100" class="form-control" id="calcAcademicScore" value="88" placeholder="e.g. 88" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Category / Quota</label>
+                                    <select class="select form-select" id="calcCategory">
+                                        <option value="general">General / Open</option>
+                                        <option value="sports">National Sports Quota (10% Off)</option>
+                                        <option value="alumni">Alumni Ward (5% Off)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="calc-result-box mt-4">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-7">
+                                    <small class="text-white-50 text-uppercase fw-bold">Estimated Fee Breakdown</small>
+                                    <div class="d-flex align-items-baseline gap-2 mt-1">
+                                        <h2 class="display-6 fw-bold mb-0 text-warning" id="resSemesterFee">₹93,750</h2>
+                                        <span class="fs-7 text-white-50">/ Semester</span>
+                                    </div>
+                                    <div class="mt-2 text-white-50 fs-7">
+                                        <span id="resScholarshipBadge" class="badge bg-success me-1">25% Merit Scholarship Applied</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 border-start border-secondary ps-md-4">
+                                    <small class="text-white-50 d-block">Academic Status:</small>
+                                    <span class="badge bg-success fs-6 mt-1" id="resEligibilityBadge"><i class="bi bi-check-circle-fill me-1"></i> Fully Eligible</span>
+                                    <small class="d-block mt-2 text-white-50 fs-7" id="resEligibilityNote">Your score exceeds the minimum 60% criteria.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Board & Announcements Section -->
+    <section id="notice-board" class="py-5 bg-body-tertiary">
+        <div class="container py-4">
+            <div class="row align-items-end mb-4">
+                <div class="col-md-7">
+                    <span class="text-amber fw-bold text-uppercase tracking-wider">Stay Informed</span>
+                    <h2 class="display-6 mt-1">Notice Board & Official Circulars</h2>
+                </div>
+                <div class="col-md-5 mt-3 mt-md-0">
+                    <div class="input-group">
+                        <span class="input-group-text bg-body border-end-0"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-start-0" id="noticeSearchInput" placeholder="Search circulars, exams, events...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div id="noticeListContainer">
+                        <!-- Notice 1 -->
+                        <div class="notice-item" data-title="mid term examination schedule spring 2026 timetable">
+                            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                                <div>
+                                    <span class="badge bg-danger mb-2">URGENT</span>
+                                    <span class="badge bg-primary mb-2">EXAMS</span>
+                                    <h5 class="fw-bold mb-1">Mid-Term Examination Schedule & Hall Ticket Download - Spring 2026</h5>
+                                    <p class="text-muted fs-7 mb-0">All UG & PG students are advised to download hall tickets before March 10th. Attendance threshold is strictly 75%.</p>
+                                </div>
+                                <div class="text-end">
+                                    <span class="text-muted fs-7 d-block mb-2"><i class="bi bi-calendar3 me-1"></i> Feb 28, 2026</span>
+                                    <button class="btn btn-sm btn-outline-navy download-circular-btn"><i class="bi bi-download me-1"></i> PDF (1.2MB)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notice 2 -->
+                        <div class="notice-item" data-title="international conference on artificial intelligence Machine Learning 2026">
+                            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                                <div>
+                                    <span class="badge bg-success mb-2">SEMINAR</span>
+                                    <h5 class="fw-bold mb-1">Call for Papers: 8th International Conference on AI & Autonomous Robotics</h5>
+                                    <p class="text-muted fs-7 mb-0">Submissions open for IEEE indexed conference hosted by the Department of CS & AI.</p>
+                                </div>
+                                <div class="text-end">
+                                    <span class="text-muted fs-7 d-block mb-2"><i class="bi bi-calendar3 me-1"></i> Feb 24, 2026</span>
+                                    <button class="btn btn-sm btn-outline-navy download-circular-btn"><i class="bi bi-download me-1"></i> PDF (850KB)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notice 3 -->
+                        <div class="notice-item" data-title="annual sports meet apexum registration deadline">
+                            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                                <div>
+                                    <span class="badge bg-warning text-dark mb-2">SPORTS</span>
+                                    <h5 class="fw-bold mb-1">Annual Sports Meet 'APEXUM 2026' Trials Registration</h5>
+                                    <p class="text-muted fs-7 mb-0">Inter-departmental selection trials start next Monday at the Sports Complex ground.</p>
+                                </div>
+                                <div class="text-end">
+                                    <span class="text-muted fs-7 d-block mb-2"><i class="bi bi-calendar3 me-1"></i> Feb 20, 2026</span>
+                                    <button class="btn btn-sm btn-outline-navy download-circular-btn"><i class="bi bi-download me-1"></i> PDF (520KB)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Events Calendar Sidebar -->
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-calendar-event text-warning me-2"></i> Upcoming Events</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex align-items-center gap-3 py-3 border-bottom">
+                                <div class="bg-primary text-white rounded-3 p-2 text-center" style="min-width: 55px;">
+                                    <span class="d-block fw-bold fs-5 lh-1">15</span>
+                                    <small class="fs-8 text-uppercase">MAR</small>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">ApexTech Hackathon 2026</h6>
+                                    <small class="text-muted"><i class="bi bi-geo-alt me-1"></i> Central Innovation Hub</small>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 py-3 border-bottom">
+                                <div class="bg-primary text-white rounded-3 p-2 text-center" style="min-width: 55px;">
+                                    <span class="d-block fw-bold fs-5 lh-1">22</span>
+                                    <small class="fs-8 text-uppercase">MAR</small>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Global Leadership Summit</h6>
+                                    <small class="text-muted"><i class="bi bi-geo-alt me-1"></i> Main University Auditorium</small>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 pt-3">
+                                <div class="bg-primary text-white rounded-3 p-2 text-center" style="min-width: 55px;">
+                                    <span class="d-block fw-bold fs-5 lh-1">05</span>
+                                    <small class="fs-8 text-uppercase">APR</small>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Annual Cultural Fest - Rhythm</h6>
+                                    <small class="text-muted"><i class="bi bi-geo-alt me-1"></i> Campus Open Grounds</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life & Gallery Section -->
+    <section id="campus-life" class="py-5">
+        <div class="container py-4">
+            <div class="text-center max-w-2xl mx-auto mb-5">
+                <span class="text-amber fw-bold text-uppercase tracking-wider">Vibrant Community</span>
+                <h2 class="display-6 mt-1">Campus Life & World-Class Infrastructure</h2>
+                <p class="text-muted">Take a glimpse inside our sprawling 150-acre green campus designed for overall growth and wellbeing.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Gallery Item 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80" data-caption="Central Knowledge Resource Library - Over 250,000 volumes and digital journals.">
+                        <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80" alt="Library">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-warning text-dark w-fit mb-2">Academic Hub</span>
+                            <h5 class="text-white fw-bold mb-0">Central Digital Library</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80" data-caption="Olympic Grade Sports Arena & Swimming Pool Complex.">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" alt="Sports">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-warning text-dark w-fit mb-2">Athletics</span>
+                            <h5 class="text-white fw-bold mb-0">Olympic Sports Complex</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80" data-caption="2,500 Seat Air-Conditioned Main University Convention Center.">
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80" alt="Auditorium">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-warning text-dark w-fit mb-2">Events</span>
+                            <h5 class="text-white fw-bold mb-0">Grand Auditorium</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80" data-caption="Advanced Nanotechnology & Supercomputing Lab.">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Tech Lab">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-warning text-dark w-fit mb-2">Research</span>
+                            <h5 class="text-white fw-bold mb-0">Supercomputing Facility</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1200&q=80" data-caption="Modern Air-Conditioned Student Hostels with high-speed Wi-Fi.">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=600&q=80" alt="Hostels">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-warning text-dark w-fit mb-2">Residential</span>
+                            <h5 class="text-white fw-bold mb-0">Student Residences</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80" data-caption="Eco-friendly solar powered university square.">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80" alt="Campus Green">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-warning text-dark w-fit mb-2">Environment</span>
+                            <h5 class="text-white fw-bold mb-0">Green Quadrangle</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Inquiry Section -->
+    <section id="contact" class="py-5 bg-body-tertiary">
+        <div class="container py-4">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <span class="text-amber fw-bold text-uppercase tracking-wider">Get In Touch</span>
+                    <h2 class="display-6 mt-1 mb-4">Have Questions? Reach Out To Our Team.</h2>
+                    
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="bg-primary text-white rounded-3 p-3 fs-5">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Campus Address</h6>
+                            <p class="text-muted mb-0">Apex National University, University Drive, Sector 14, Knowledge City, PIN 560098.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="bg-primary text-white rounded-3 p-3 fs-5">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Admissions Desk</h6>
+                            <p class="text-muted mb-0">+91 (080) 4567-8900 / +91 (080) 4567-8901</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="bg-primary text-white rounded-3 p-3 fs-5">
+                            <i class="bi bi-clock-fill"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Office Hours</h6>
+                            <p class="text-muted mb-0">Monday – Saturday: 9:00 AM – 5:00 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Map Simulation Box -->
+                    <div class="mt-4 p-3 bg-body rounded-4 border shadow-sm text-center">
+                        <i class="bi bi-map fs-1 text-primary"></i>
+                        <p class="mb-1 fw-bold">Interactive Campus Map</p>
+                        <small class="text-muted d-block mb-2">Located 15 mins from Metro Station</small>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#virtualTourModal"><i class="bi bi-compass me-1"></i> Open Virtual Map</button>
+                    </div>
+                </div>
+
+                <!-- Inquiry Form -->
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+                        <h4 class="fw-bold mb-1">Admission Inquiry Form</h4>
+                        <p class="text-muted mb-4">Fill in your details to receive an official prospectus and counselor callback.</p>
+                        
+                        <form id="inquiryForm" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Full Name *</label>
+                                    <input type="text" class="form-control" required placeholder="John Doe">
+                                    <div class="invalid-feedback">Please enter your full name.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Email Address *</label>
+                                    <input type="email" class="form-control" required placeholder="john@example.com">
+                                    <div class="invalid-feedback">Please enter a valid email.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Phone Number *</label>
+                                    <input type="tel" pattern="[0-9]{10}" class="form-control" required placeholder="10-digit mobile number">
+                                    <div class="invalid-feedback">Enter a valid 10-digit phone number.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Program Interested</label>
+                                    <select class="select form-select">
+                                        <option selected>B.Tech Computer Science & AI</option>
+                                        <option>MBA International Business</option>
+                                        <option>B.Tech Robotics</option>
+                                        <option>B.Sc Biotechnology</option>
+                                        <option>BA Journalism</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Your Message or Query</label>
+                                    <textarea class="form-control" rows="4" placeholder="Tell us about your background or questions regarding admissions..."></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-amber w-100 py-3">Submit Inquiry <i class="bi bi-send-fill ms-1"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <!-- Col 1: Brand -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="bg-warning text-dark rounded-3 p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="bi bi-mortarboard-fill fs-4"></i>
+                        </div>
+                        <span class="brand-font fs-4 text-white">APEX UNIVERSITY</span>
+                    </div>
+                    <p class="text-slate fs-7">Apex National University is dedicated to excellence in teaching, innovative research, and nurturing global ethical leaders across science, tech, and business.</p>
+                    <div class="d-flex gap-3 fs-5 mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled fs-7 d-grid gap-2">
+                        <li><a href="#about">About Varsity</a></li>
+                        <li><a href="#programs">Academics</a></li>
+                        <li><a href="#calculator">Fee Structure</a></li>
+                        <li><a href="#notice-board">Examinations</a></li>
+                        <li><a href="#campus-life">Hostels & Sports</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Faculties -->
+                <div class="col-lg-3 col-md-6">
+                    <h5>Faculties & Schools</h5>
+                    <ul class="list-unstyled fs-7 d-grid gap-2">
+                        <li><a href="#">School of Computing & AI</a></li>
+                        <li><a href="#">School of Engineering</a></li>
+                        <li><a href="#">Apex Business School</a></li>
+                        <li><a href="#">Faculty of Bio-Sciences</a></li>
+                        <li><a href="#">School of Media & Humanities</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Newsletter -->
+                <div class="col-lg-3 col-md-6">
+                    <h5>University Dispatch</h5>
+                    <p class="fs-7 text-slate">Subscribe to receive monthly research publications and academic updates.</p>
+                    <form id="newsletterForm">
+                        <div class="input-group">
+                            <input type="email" class="form-control form-control-sm" placeholder="Your email address" required>
+                            <button class="btn btn-warning btn-sm" type="submit">Join</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 fs-7">
+                <div>&copy; 2026 Apex National University. All Rights Reserved.</div>
+                <div class="d-flex gap-4">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">RTI Disclosure</a>
+                    <a href="#">Anti-Ragging Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal 1: Apply Now Admission Form Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-pencil-square me-2 text-warning"></i> Online Admission Application 2026-27</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="applyModalForm" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Applicant First Name *</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Last Name *</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Email *</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Phone *</label>
+                                <input type="tel" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Target Degree</label>
+                                <select class="select form-select">
+                                    <option>B.Tech Computer Science & AI</option>
+                                    <option>MBA International Business</option>
+                                    <option>B.Tech Robotics</option>
+                                    <option>B.Sc Biotechnology</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">12th / Grad Percentage (%)</label>
+                                <input type="number" min="50" max="100" class="form-control" required placeholder="e.g. 85">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" required id="agreeTerms">
+                                    <label class="form-check-label fs-7" for="agreeTerms">I hereby declare that all information submitted is true to the best of my knowledge.</label>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-amber w-100 py-2">Submit Application <i class="bi bi-arrow-right ms-1"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Syllabus & Details Modal -->
+    <div class="modal fade" id="syllabusModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-navy text-white">
+                    <h5 class="modal-title fw-bold" id="syllabusModalTitle">Program Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <small class="text-muted fw-bold d-block text-uppercase">Duration:</small>
+                        <span id="syllabusModalDuration" class="fw-semibold"></span>
+                    </div>
+                    <div class="mb-3">
+                        <small class="text-muted fw-bold d-block text-uppercase">Eligibility Criteria:</small>
+                        <span id="syllabusModalEligibility" class="text-primary fw-semibold"></span>
+                    </div>
+                    <div class="mb-3">
+                        <small class="text-muted fw-bold d-block text-uppercase">Curriculum Highlights:</small>
+                        <p id="syllabusModalContent" class="bg-body-tertiary p-3 rounded-3 fs-7 border mb-0"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-amber btn-sm" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#applyModal">Apply For This Course</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Lightbox Image Preview Modal -->
+    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark text-white border-0">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-0 pb-4">
+                    <img id="lightboxImage" src="" class="img-fluid rounded-3 mb-3" style="max-height: 75vh; object-fit: contain;">
+                    <p id="lightboxCaption" class="lead text-light mb-0 px-3 fs-6"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: 360 Virtual Tour Modal -->
+    <div class="modal fade" id="virtualTourModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-badge-3d me-2"></i> 360° Interactive Campus Virtual Tour</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?controls=0" title="Campus Tour Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+        <div id="liveToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                    Action executed successfully!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Interactivity Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Dark/Light Mode Theme Switcher
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+            const htmlElement = document.documentElement;
+
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                htmlElement.setAttribute('data-bs-theme', newTheme);
+                if(newTheme === 'dark') {
+                    themeIcon.className = 'bi bi-sun-fill text-warning';
+                    themeText.textContent = 'Light';
+                } else {
+                    themeIcon.className = 'bi bi-moon-stars-fill';
+                    themeText.textContent = 'Dark';
+                }
+            });
+
+            // 2. Key Stats Animated Counter
+            const counters = document.querySelectorAll('.counter');
+            let hasAnimated = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        hasAnimated = true;
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const speed = 200;
+                            const updateCount = () => {
+                                const count = +counter.innerText;
+                                const inc = target / speed;
+                                if (count < target) {
+                                    counter.innerText = Math.ceil(count + inc);
+                                    setTimeout(updateCount, 15);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            updateCount();
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if(counters.length > 0) {
+                observer.observe(counters[0].closest('section'));
+            }
+
+            // 3. Program Category Filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const programItems = document.querySelectorAll('.program-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active', 'btn-navy'));
+                    filterBtns.forEach(b => b.classList.add('btn-outline-secondary'));
+                    btn.classList.add('active', 'btn-navy');
+                    btn.classList.remove('btn-outline-secondary');
+
+                    const filter = btn.getAttribute('data-filter');
+                    programItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 4. Populate Syllabus Modal
+            const syllabusModal = new bootstrap.Modal(document.getElementById('syllabusModal'));
+            document.querySelectorAll('.view-syllabus-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.getElementById('syllabusModalTitle').textContent = btn.getAttribute('data-title');
+                    document.getElementById('syllabusModalDuration').textContent = btn.getAttribute('data-duration');
+                    document.getElementById('syllabusModalEligibility').textContent = btn.getAttribute('data-eligibility');
+                    document.getElementById('syllabusModalContent').textContent = btn.getAttribute('data-syllabus');
+                    syllabusModal.show();
+                });
+            });
+
+            // 5. Interactive Fee & Eligibility Calculator
+            const calcProgramSelect = document.getElementById('calcProgramSelect');
+            const calcAcademicScore = document.getElementById('calcAcademicScore');
+            const calcCategory = document.getElementById('calcCategory');
+            const resSemesterFee = document.getElementById('resSemesterFee');
+            const resScholarshipBadge = document.getElementById('resScholarshipBadge');
+            const resEligibilityBadge = document.getElementById('resEligibilityBadge');
+            const resEligibilityNote = document.getElementById('resEligibilityNote');
+
+            function calculateFee() {
+                const baseFee = parseFloat(calcProgramSelect.value);
+                const score = parseFloat(calcAcademicScore.value) || 0;
+                const category = calcCategory.value;
+                const minScoreReq = parseFloat(calcProgramSelect.options[calcProgramSelect.selectedIndex].getAttribute('data-min'));
+
+                let discount = 0;
+                let scholarshipText = 'Standard Fee Structure';
+
+                if (score >= 90) {
+                    discount = 0.40; // 40%
+                    scholarshipText = '40% President\'s Merit Scholarship Applied';
+                } else if (score >= 80) {
+                    discount = 0.25; // 25%
+                    scholarshipText = '25% Deans\'s Scholarship Applied';
+                } else if (score >= 70) {
+                    discount = 0.10; // 10%
+                    scholarshipText = '10% Merit Discount Applied';
+                }
+
+                if(category === 'sports') discount += 0.10;
+                if(category === 'alumni') discount += 0.05;
+
+                const finalFee = Math.round(baseFee * (1 - Math.min(discount, 0.50)));
+                resSemesterFee.textContent = '₹' + finalFee.toLocaleString('en-IN');
+                resScholarshipBadge.textContent = scholarshipText;
+
+                // Eligibility check
+                if (score >= minScoreReq) {
+                    resEligibilityBadge.className = 'badge bg-success fs-6 mt-1';
+                    resEligibilityBadge.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> Fully Eligible';
+                    resEligibilityNote.textContent = `Your score (${score}%) satisfies the minimum ${minScoreReq}% requirement.`;
+                } else {
+                    resEligibilityBadge.className = 'badge bg-danger fs-6 mt-1';
+                    resEligibilityBadge.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-1"></i> Entrance Test Needed';
+                    resEligibilityNote.textContent = `Minimum required is ${minScoreReq}%. You may qualify via ANUEE Entrance Exam.`;
+                }
+            }
+
+            calcProgramSelect.addEventListener('change', calculateFee);
+            calcAcademicScore.addEventListener('input', calculateFee);
+            calcCategory.addEventListener('change', calculateFee);
+            calculateFee(); // Initial computation
+
+            // 6. Notice Board Real-time Search
+            const noticeSearchInput = document.getElementById('noticeSearchInput');
+            const noticeItems = document.querySelectorAll('.notice-item');
+
+            noticeSearchInput.addEventListener('keyup', () => {
+                const query = noticeSearchInput.value.toLowerCase();
+                noticeItems.forEach(item => {
+                    const text = item.getAttribute('data-title').toLowerCase();
+                    if(text.includes(query)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // 7. Lightbox Gallery Preview Setup
+            const lightboxModal = document.getElementById('lightboxModal');
+            lightboxModal.addEventListener('show.bs.modal', (e) => {
+                const trigger = e.relatedTarget;
+                const imgSrc = trigger.getAttribute('data-img');
+                const caption = trigger.getAttribute('data-caption');
+                
+                document.getElementById('lightboxImage').src = imgSrc;
+                document.getElementById('lightboxCaption').textContent = caption;
+            });
+
+            // 8. Toast Helper & Form Validation
+            const liveToast = new bootstrap.Toast(document.getElementById('liveToast'));
+            function showToast(msg) {
+                document.getElementById('toastMessage').textContent = msg;
+                liveToast.show();
+            }
+
+            // Inquiry Form Handler
+            document.getElementById('inquiryForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (e.target.checkValidity()) {
+                    showToast('Inquiry submitted successfully! A counselor will contact you shortly.');
+                    e.target.reset();
+                    e.target.classList.remove('was-validated');
+                } else {
+                    e.target.classList.add('was-validated');
+                }
+            });
+
+            // Application Modal Form Handler
+            document.getElementById('applyModalForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (e.target.checkValidity()) {
+                    const applyModalEl = bootstrap.Modal.getInstance(document.getElementById('applyModal'));
+                    applyModalEl.hide();
+                    showToast('Application registered! Check your email for login credentials.');
+                    e.target.reset();
+                    e.target.classList.remove('was-validated');
+                } else {
+                    e.target.classList.add('was-validated');
+                }
+            });
+
+            // Newsletter Form Handler
+            document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                showToast('Thank you for subscribing to Apex University Dispatch!');
+                e.target.reset();
+            });
+
+            // Simulated Circular PDF Download
+            document.querySelectorAll('.download-circular-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    showToast('Downloading official notification PDF document...');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
